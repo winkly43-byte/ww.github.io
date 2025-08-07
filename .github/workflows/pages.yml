@@ -1,0 +1,17 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master  # 如果分支是 main 请改为 main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .  # 部署仓库根目录内容
